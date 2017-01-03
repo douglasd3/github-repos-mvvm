@@ -40,18 +40,51 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 0 images.
+  /// This `R.image` struct is generated, and contains static references to 3 images.
   struct image {
+    /// Image `fork`.
+    static let fork = Rswift.ImageResource(bundle: R.hostingBundle, name: "fork")
+    /// Image `github`.
+    static let github = Rswift.ImageResource(bundle: R.hostingBundle, name: "github")
+    /// Image `star`.
+    static let star = Rswift.ImageResource(bundle: R.hostingBundle, name: "star")
+    
+    /// `UIImage(named: "fork", bundle: ..., traitCollection: ...)`
+    static func fork(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.fork, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "github", bundle: ..., traitCollection: ...)`
+    static func github(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.github, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "star", bundle: ..., traitCollection: ...)`
+    static func star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.star, compatibleWith: traitCollection)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 0 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
   struct nib {
+    /// Nib `RepositoryCell`.
+    static let repositoryCell = _R.nib._RepositoryCell()
+    
+    /// `UINib(name: "RepositoryCell", in: bundle)`
+    static func repositoryCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.repositoryCell)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 0 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `RepositoryCell`.
+    static let repositoryCell: Rswift.ReuseIdentifier<RepositoryCell> = Rswift.ReuseIdentifier(identifier: "RepositoryCell")
+    
     fileprivate init() {}
   }
   
@@ -87,7 +120,7 @@ struct R: Rswift.Validatable {
   
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
-      // There are no resources to validate
+      try _R.validate()
     }
     
     fileprivate init() {}
@@ -96,8 +129,35 @@ struct R: Rswift.Validatable {
   fileprivate init() {}
 }
 
-struct _R {
-  struct nib {
+struct _R: Rswift.Validatable {
+  static func validate() throws {
+    try nib.validate()
+  }
+  
+  struct nib: Rswift.Validatable {
+    static func validate() throws {
+      try _RepositoryCell.validate()
+    }
+    
+    struct _RepositoryCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = RepositoryCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "RepositoryCell"
+      let name = "RepositoryCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> RepositoryCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? RepositoryCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "star") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'star' is used in nib 'RepositoryCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "fork") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fork' is used in nib 'RepositoryCell', but couldn't be loaded.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   

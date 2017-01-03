@@ -19,6 +19,9 @@
 		A51C818D1E1BE03000FA2654 /* RepositoriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C818C1E1BE03000FA2654 /* RepositoriesListViewModel.swift */; };
 		A51C818F1E1BE17800FA2654 /* RepositoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C818E1E1BE17800FA2654 /* RepositoriesCoordinator.swift */; };
 		A51C81931E1BE6CF00FA2654 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C81921E1BE6CF00FA2654 /* R.generated.swift */; };
+		A51C81961E1BEEED00FA2654 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C81941E1BEEED00FA2654 /* RepositoryCell.swift */; };
+		A51C81971E1BEEED00FA2654 /* RepositoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51C81951E1BEEED00FA2654 /* RepositoryCell.xib */; };
+		A51C81991E1BEF4800FA2654 /* RepositoryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C81981E1BEF4800FA2654 /* RepositoryItemViewModel.swift */; };
 		AEA780AEC473B0A2AA6DFC6F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8423D1CE34C648E8D16D1140 /* Settings.bundle */; };
 		CB6263F34E1BDDB806E489AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E59588E2AE3E3B578BEDD8D /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +57,9 @@
 		A51C818C1E1BE03000FA2654 /* RepositoriesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesListViewModel.swift; sourceTree = "<group>"; };
 		A51C818E1E1BE17800FA2654 /* RepositoriesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesCoordinator.swift; sourceTree = "<group>"; };
 		A51C81921E1BE6CF00FA2654 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		A51C81941E1BEEED00FA2654 /* RepositoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		A51C81951E1BEEED00FA2654 /* RepositoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryCell.xib; sourceTree = "<group>"; };
+		A51C81981E1BEF4800FA2654 /* RepositoryItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryItemViewModel.swift; sourceTree = "<group>"; };
 		B41D7B321126279D87778765 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A5F13509EE276F3BEBFEE9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				A51C818C1E1BE03000FA2654 /* RepositoriesListViewModel.swift */,
+				A51C81981E1BEF4800FA2654 /* RepositoryItemViewModel.swift */,
 			);
 			path = "Search Repositories";
 			sourceTree = "<group>";
@@ -264,6 +271,8 @@
 		A7B0EE29ED0DACF8BC4A1317 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A51C81941E1BEEED00FA2654 /* RepositoryCell.swift */,
+				A51C81951E1BEEED00FA2654 /* RepositoryCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -406,6 +415,7 @@
 				421B1E7F3A5AB8F2597D8E35 /* Main.storyboard in Resources */,
 				98065322955601E59EC94C9F /* LaunchScreen.storyboard in Resources */,
 				76876AA3EF07C6980293AC35 /* Assets.xcassets in Resources */,
+				A51C81971E1BEEED00FA2654 /* RepositoryCell.xib in Resources */,
 				AEA780AEC473B0A2AA6DFC6F /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51C81991E1BEF4800FA2654 /* RepositoryItemViewModel.swift in Sources */,
 				A51C818F1E1BE17800FA2654 /* RepositoriesCoordinator.swift in Sources */,
 				A51C81931E1BE6CF00FA2654 /* R.generated.swift in Sources */,
 				A51C81881E1BDD4600FA2654 /* AppCoordinator.swift in Sources */,
@@ -559,6 +570,7 @@
 				A51C81851E1BDBF000FA2654 /* Coordinator.swift in Sources */,
 				A51C818A1E1BDE5200FA2654 /* RepositoriesListViewController.swift in Sources */,
 				CB6263F34E1BDDB806E489AF /* AppDelegate.swift in Sources */,
+				A51C81961E1BEEED00FA2654 /* RepositoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
