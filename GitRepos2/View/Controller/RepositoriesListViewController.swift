@@ -23,8 +23,11 @@ extension RepositoriesListViewController {
         super.viewDidLoad()
         
         setup()
+        viewModel.apiResponseHandler = {
+            self.tableView.reloadData()
+        }
         
-//        viewModel.fetchRepositories()
+        viewModel.fetchRepositories()
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
