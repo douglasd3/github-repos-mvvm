@@ -18,9 +18,17 @@ class RepositoryCell: UITableViewCell {
     @IBOutlet weak var repoFullNameLabel: UILabel!
     @IBOutlet weak var ownerImageView: UIImageView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var viewModel: RepositoryItemViewModel! {
+        didSet {
+            repoNameLabel.text = viewModel.repoName
+            repoDescriptionLabel.text = viewModel.repoDescription
+            forksLabel.text = viewModel.forks
+            starsLabel.text = viewModel.stars
+            ownerLabel.text = viewModel.owner
+            repoFullNameLabel.text = viewModel.repoFullName
+        }
     }
+    
+    
     
 }

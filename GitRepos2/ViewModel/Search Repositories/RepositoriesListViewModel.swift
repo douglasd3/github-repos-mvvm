@@ -10,6 +10,8 @@ import Foundation
 
 class RepositoriesListViewModel {
     
+    var dataSource: [Repository] = [Repository(name: "Repo1", numberOfForks: 3, numberOfStars: 4, fullname: "Repo 1 legal", description: "Blalalalalalalldkjasjal"), Repository(name: "Repo2", numberOfForks: 399, numberOfStars: 42, fullname: "Repo 2 legal", description: "Blalalalalalalldkjasja2l"), Repository(name: "Repo3", numberOfForks: 3990, numberOfStars: 422, fullname: "Repo 2 legal", description: "Blalalalalalalldkjasja2lBlalalalalalalldkjasja2lBlalalalalalalldkjasja2lBlalalalalalalldkjasja2l")]
+    
     var coordinator: RepositoriesCoordinator!
     
     init() {

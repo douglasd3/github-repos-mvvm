@@ -65,13 +65,15 @@ extension RepositoriesListViewController {
 extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepositoryCell.self))
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepositoryCell.self)) as! RepositoryCell
         
-        return cell!
+        cell.viewModel = RepositoryItemViewModel(model: viewModel.dataSource[indexPath.row])
+        
+        return cell
     }
     
 }
