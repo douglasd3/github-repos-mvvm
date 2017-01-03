@@ -7,51 +7,52 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForAnalyzing = "YES"
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
-            buildForArchiving = "YES">
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A97418BACCA96FD159272B6A'
-               BlueprintName = 'GitRepos2'
-               ReferencedContainer = 'container:GitRepos2.xcodeproj'
-               BuildableName = 'GitRepos2.app'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A97418BACCA96FD159272B6A"
+               BuildableName = "GitRepos2.app"
+               BlueprintName = "GitRepos2"
+               ReferencedContainer = "container:GitRepos2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
-      <AdditionalOptions>
-      </AdditionalOptions>
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'AF0F4E6AC5BB2847C9C1044C'
-               BlueprintName = 'UnitTests'
-               ReferencedContainer = 'container:GitRepos2.xcodeproj'
-               BuildableName = 'UnitTests.bundle'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF0F4E6AC5BB2847C9C1044C"
+               BuildableName = "UnitTests.xctest"
+               BlueprintName = "UnitTests"
+               ReferencedContainer = "container:GitRepos2.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
-            BuildableIdentifier = 'primary'
-            BlueprintIdentifier = 'A97418BACCA96FD159272B6A'
-            BlueprintName = 'GitRepos2'
-            ReferencedContainer = 'container:GitRepos2.xcodeproj'
-            BuildableName = 'GitRepos2.app'>
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A97418BACCA96FD159272B6A"
+            BuildableName = "GitRepos2.app"
+            BlueprintName = "GitRepos2"
+            ReferencedContainer = "container:GitRepos2.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -59,34 +60,34 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      buildConfiguration = "Debug"
       allowLocationSimulation = "YES">
-      <AdditionalOptions>
-      </AdditionalOptions>
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
-            BuildableIdentifier = 'primary'
-            BlueprintIdentifier = 'A97418BACCA96FD159272B6A'
-            BlueprintName = 'GitRepos2'
-            ReferencedContainer = 'container:GitRepos2.xcodeproj'
-            BuildableName = 'GitRepos2.app'>
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A97418BACCA96FD159272B6A"
+            BuildableName = "GitRepos2.app"
+            BlueprintName = "GitRepos2"
+            ReferencedContainer = "container:GitRepos2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES"
-      buildConfiguration = "Release"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <BuildableProductRunnable>
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
-            BuildableIdentifier = 'primary'
-            BlueprintIdentifier = 'A97418BACCA96FD159272B6A'
-            BlueprintName = 'GitRepos2'
-            ReferencedContainer = 'container:GitRepos2.xcodeproj'
-            BuildableName = 'GitRepos2.app'>
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A97418BACCA96FD159272B6A"
+            BuildableName = "GitRepos2.app"
+            BlueprintName = "GitRepos2"
+            ReferencedContainer = "container:GitRepos2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

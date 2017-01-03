@@ -5,39 +5,32 @@ use_frameworks!
 inhibit_all_warnings!
 
 abstract_target 'GitRepos2Common' do  
+  pod 'Alamofire',             '~> 4.2'
+  pod 'ObjectMapper',          '~> 2.2'
+  pod 'AlamofireObjectMapper', '~> 4.0'
 
-  pod 'Swinject', '~> 1.1'
-    
-  pod 'Alamofire',                    '~> 3.3'
-  pod 'ObjectMapper',                 '~> 1.3'
-  pod 'AlamofireObjectMapper',        '~> 3.0'
-  pod 'Moya/RxSwift',                 '~> 6.5'
-  pod 'Moya-ObjectMapper/RxSwift',    '~> 1.2'
-  pod 'RxSwift',                      '~> 2.4'
-  pod 'RxCocoa',                      '~> 2.4'
-  pod 'RxAlamofire',                  '~> 2.2'
-  pod 'RxDataSources',                '~> 0.8'
-  pod 'NSObject+Rx',                  '~> 1.2'
-  pod 'AsyncSwift',                   '~> 1.7'
-  pod 'Reusable',                     '~> 2.3'
-  pod 'R.swift',                      '~> 2.3'
+  pod 'Moya',                  '8.0.0-beta.5'
+  pod 'Moya/RxSwift'
+  pod 'Moya-ObjectMapper',     '~> 2.2'
+
+  pod 'RxSwift',               '~> 3.0'
+  pod 'RxCocoa',               '~> 3.0'
+  pod 'RxDataSources',         '~> 1.0'
+  pod 'NSObject+Rx',           '2.0.0'
   
-  pod 'Nuke', '~> 3.1'
+  pod 'SwiftyColor',           '~> 1.0.0'
+  pod 'SwiftDate',             '~> 4.0.7'
+  pod 'R.swift',               '~> 3.1.0'
+  pod 'SpringIndicator'
   
-  pod 'SwiftDate', '~> 3.0'
-  pod 'SwiftyColor', '~> 0.1'
-  pod 'SpringIndicator', '~> 1.2'
-  pod 'SnapKit', '~> 0.20'
-  pod 'AsyncSwift', '~> 1.7'
+  target 'GitRepos2' do
+    pod 'PINRemoteImage',        '~> 2.1.4'
+    pod 'StatefulViewController'
+  end 
 
-  pod 'StatefulViewController', '~> 1.0'
-
-  target 'GitRepos2' do  end
-
-  target 'GitRepos2Tests' do	    
-    pod 'Dobby',    '~> 0.5'
-    pod 'Quick',    '~> 0.9'
-    pod 'Nimble',   '~> 4.0'	  
+  target 'UnitTests' do
+    pod 'Nimble',    '~> 5.1.1'
+    pod 'Quick',     '~> 0.10.0'
   end
 end
 
@@ -55,5 +48,12 @@ post_install do | installer |
     puts 'Copying acknowledgements to Settings.bundle'
     FileUtils.cp_r(pods_acknowledgements_path, "#{settings_bundle_path}/Acknowledgements.plist", :remove_destination => true)
   end
+
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '3.0' # to whatever swift version you're using
+    end
+  end
+
 end
 
