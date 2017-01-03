@@ -22,6 +22,10 @@ class RepositoriesListViewModel {
     
     var coordinator: RepositoriesCoordinator!
     
+    var hasContent: Bool {
+        return dataSource.count > 0
+    }
+    
     init() {
 
     }
@@ -33,6 +37,7 @@ class RepositoriesListViewModel {
 extension RepositoriesListViewModel {
     
     func fetchRepositories() {
+        
         apiClient.searchRepositories(nextPageTrigger: nextPageTrigger)
             .skip(1)
             .subscribe(onNext: { (repositories) in

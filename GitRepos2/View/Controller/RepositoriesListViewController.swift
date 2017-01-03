@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import StatefulViewController
 
-class RepositoriesListViewController: UIViewController {
+class RepositoriesListViewController: UIViewController, LoadingStatePresentableViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var viewModel: RepositoriesListViewModel!
@@ -25,20 +26,28 @@ extension RepositoriesListViewController {
         setup()
         viewModel.apiResponseHandler = {
             self.tableView.reloadData()
+            self.endLoading()
         }
         
+        startLoading()
         viewModel.fetchRepositories()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        setupInitialViewState()
-//        
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            tableView.deselectRow(at: indexPath, animated: true)
-//        }
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupInitialViewState()
+    }
+    
+}
+
+// MARK: StatefulViewController
+
+extension RepositoriesListViewController: StatefulViewController {
+    
+    func hasContent() -> Bool {
+        return viewModel.hasContent
+    }
     
 }
 
@@ -49,8 +58,8 @@ extension RepositoriesListViewController {
     fileprivate func setup() {
         setupTableView()
         setupNavigationBar()
+        setupLoadingState()
 //        setupTableViewDataSource()
-//        setupLoadingState()
     }
     
     fileprivate func setupNavigationBar() {
