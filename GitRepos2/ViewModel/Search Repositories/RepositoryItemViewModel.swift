@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RepositoryItemViewModel {
     
@@ -29,13 +30,16 @@ class RepositoryItemViewModel {
     }
     
     var owner: String! {
-        return "Teste"
+        return model.owner.login
     }
     
     var repoFullName: String! {
         return model.fullname
     }
-    //var ownerImage: UIImage!
+    
+    var ownerImageURL: URL! {
+        return model.owner.avatarUrl
+    }
     
     init(model: Repository) {
         self.model = model

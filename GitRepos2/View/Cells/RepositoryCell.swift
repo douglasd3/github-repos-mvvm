@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PINRemoteImage
 
 class RepositoryCell: UITableViewCell {
     
@@ -26,9 +27,8 @@ class RepositoryCell: UITableViewCell {
             starsLabel.text = viewModel.stars
             ownerLabel.text = viewModel.owner
             repoFullNameLabel.text = viewModel.repoFullName
+            ownerImageView.pin_setImage(from: viewModel.ownerImageURL, placeholderImage: R.image.github())
         }
     }
-    
-    
     
 }

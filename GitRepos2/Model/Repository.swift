@@ -21,7 +21,7 @@ struct Repository: Mappable {
     var numberOfStars: Int!
     var fullname: String!
     var description: String?
-    //var owner: User!
+    var owner: User!
     
     init?(map: Map) { }
     
@@ -40,7 +40,7 @@ struct Repository: Mappable {
         numberOfStars   <- map[Key.numberOfStars.rawValue]
         fullname        <- map[Key.fullname.rawValue]
         description     <- map[Key.description.rawValue]
-        //owner           <- map[Key.owner.rawValue]
+        owner           <- map[Key.owner.rawValue]
     }
     
 }
