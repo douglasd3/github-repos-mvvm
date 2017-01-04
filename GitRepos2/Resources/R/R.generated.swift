@@ -67,10 +67,17 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
   struct nib {
+    /// Nib `PullRequestCell`.
+    static let pullRequestCell = _R.nib._PullRequestCell()
     /// Nib `RepositoryCell`.
     static let repositoryCell = _R.nib._RepositoryCell()
+    
+    /// `UINib(name: "PullRequestCell", in: bundle)`
+    static func pullRequestCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.pullRequestCell)
+    }
     
     /// `UINib(name: "RepositoryCell", in: bundle)`
     static func repositoryCell(_: Void = ()) -> UIKit.UINib {
@@ -80,8 +87,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `PullRequestCell`.
+    static let pullRequestCell: Rswift.ReuseIdentifier<PullRequestCell> = Rswift.ReuseIdentifier(identifier: "PullRequestCell")
     /// Reuse identifier `RepositoryCell`.
     static let repositoryCell: Rswift.ReuseIdentifier<RepositoryCell> = Rswift.ReuseIdentifier(identifier: "RepositoryCell")
     
@@ -153,6 +162,20 @@ struct _R: Rswift.Validatable {
   struct nib: Rswift.Validatable {
     static func validate() throws {
       try _RepositoryCell.validate()
+    }
+    
+    struct _PullRequestCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = PullRequestCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "PullRequestCell"
+      let name = "PullRequestCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> PullRequestCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PullRequestCell
+      }
+      
+      fileprivate init() {}
     }
     
     struct _RepositoryCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {

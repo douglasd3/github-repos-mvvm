@@ -56,3 +56,16 @@ extension NetworkClient {
     }
     
 }
+
+extension NetworkClient {
+    
+    func loadPullRequest(forRepo repo: String, owner: String) -> Observable<[PullRequest]> {
+        return networkProvider
+            .request(MultiTarget(GithubReposRestApi.pullRequests(owner: owner, repo: repo)))
+            .mapJSON()
+            .map { (json) in
+                return Mapper<PullRequest>().mapArray(JSONObject: json) ?? []
+        }
+    }
+    
+}
