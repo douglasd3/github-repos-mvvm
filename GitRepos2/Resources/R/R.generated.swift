@@ -88,8 +88,23 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 0 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
   struct segue {
+    /// This struct is generated for `RepositoriesListViewController`, and contains static references to 1 segues.
+    struct repositoriesListViewController {
+      /// Segue identifier `DetailSegue`.
+      static let detailSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, RepositoriesListViewController, RepositoryDetailViewController> = Rswift.StoryboardSegueIdentifier(identifier: "DetailSegue")
+      
+      /// Optionally returns a typed version of segue `DetailSegue`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func detailSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, RepositoriesListViewController, RepositoryDetailViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.repositoriesListViewController.detailSegue, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   
@@ -131,6 +146,7 @@ struct R: Rswift.Validatable {
 
 struct _R: Rswift.Validatable {
   static func validate() throws {
+    try storyboard.validate()
     try nib.validate()
   }
   
@@ -161,7 +177,11 @@ struct _R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  struct storyboard {
+  struct storyboard: Rswift.Validatable {
+    static func validate() throws {
+      try main.validate()
+    }
+    
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
       typealias InitialController = UIKit.UIViewController
       
@@ -171,11 +191,26 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct main: Rswift.StoryboardResourceWithInitialControllerType {
+    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UIKit.UINavigationController
       
       let bundle = R.hostingBundle
       let name = "Main"
+      let repositoriesListViewController = StoryboardViewControllerResource<RepositoriesListViewController>(identifier: "RepositoriesListViewController")
+      let repositoryDetailViewController = StoryboardViewControllerResource<RepositoryDetailViewController>(identifier: "RepositoryDetailViewController")
+      
+      func repositoriesListViewController(_: Void = ()) -> RepositoriesListViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: repositoriesListViewController)
+      }
+      
+      func repositoryDetailViewController(_: Void = ()) -> RepositoryDetailViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: repositoryDetailViewController)
+      }
+      
+      static func validate() throws {
+        if _R.storyboard.main().repositoryDetailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'repositoryDetailViewController' could not be loaded from storyboard 'Main' as 'RepositoryDetailViewController'.") }
+        if _R.storyboard.main().repositoriesListViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'repositoriesListViewController' could not be loaded from storyboard 'Main' as 'RepositoriesListViewController'.") }
+      }
       
       fileprivate init() {}
     }

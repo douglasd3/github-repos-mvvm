@@ -103,6 +103,12 @@ extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! RepositoryCell
+        
+        viewModel.showRepoDetail(item: cell.viewModel.createDetailViewModel())
+    }
+    
 }
 
 extension RepositoriesListViewController: UIScrollViewDelegate {

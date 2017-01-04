@@ -44,4 +44,13 @@ class RepositoryItemViewModel {
     init(model: Repository) {
         self.model = model
     }
+    
+}
+
+extension RepositoryItemViewModel {
+    
+    func createDetailViewModel() -> RepositoryDetailViewModel {
+        return RepositoryDetailViewModel(repository: model)
+    }
+    
 }

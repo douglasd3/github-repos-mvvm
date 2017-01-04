@@ -27,7 +27,7 @@
         <!--Repositories List View Controller-->
         <scene sceneID="6iN-Ix-Hng">
             <objects>
-                <viewController id="ZfJ-Qb-dJf" customClass="RepositoriesListViewController" customModule="GitRepos2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RepositoriesListViewController" id="ZfJ-Qb-dJf" customClass="RepositoriesListViewController" customModule="GitRepos2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wNl-hX-fXF"/>
                         <viewControllerLayoutGuide type="bottom" id="cCJ-MJ-wH6"/>
@@ -55,11 +55,30 @@
                     <navigationItem key="navigationItem" id="4aT-ff-R3X"/>
                     <connections>
                         <outlet property="tableView" destination="5A6-Qk-QjU" id="9pM-qw-23l"/>
+                        <segue destination="7Rd-qG-GQb" kind="show" identifier="DetailSegue" id="z7p-Ex-8SA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVm-an-uzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-383.19999999999999" y="36.431784107946029"/>
+        </scene>
+        <!--Repository Detail View Controller-->
+        <scene sceneID="1bf-SV-rBe">
+            <objects>
+                <viewController storyboardIdentifier="RepositoryDetailViewController" id="7Rd-qG-GQb" customClass="RepositoryDetailViewController" customModule="GitRepos2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u53-AC-ZGX"/>
+                        <viewControllerLayoutGuide type="bottom" id="FJ2-gd-4s1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CsI-Bh-Nis">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vbc-Tu-ac5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="391" y="36"/>
         </scene>
     </scenes>
 </document>
