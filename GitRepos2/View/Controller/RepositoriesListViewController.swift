@@ -8,11 +8,14 @@
 
 import UIKit
 import StatefulViewController
+import RxDataSources
+import RxSwift
 
 class RepositoriesListViewController: UIViewController, LoadingStatePresentableViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var viewModel: RepositoriesListViewModel!
+    var page = 0
 
 }
 
@@ -22,6 +25,7 @@ extension RepositoriesListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("print")
         
         setup()
         viewModel.apiResponseHandler = {
@@ -59,7 +63,7 @@ extension RepositoriesListViewController {
         setupTableView()
         setupNavigationBar()
         setupLoadingState()
-//        setupTableViewDataSource()
+        setupTableViewDataSource()
     }
     
     fileprivate func setupNavigationBar() {
@@ -70,6 +74,17 @@ extension RepositoriesListViewController {
     fileprivate func setupTableView() {
         tableView.register(R.nib.repositoryCell)
         tableView.rowHeight = 113
+        tableView.delegate = self
+    }
+    
+    fileprivate func setupTableViewDataSource() {
+        
+        let offset = view.bounds.height * 0.6
+        viewModel.nextPageTrigger = tableView.rx.contentOffset
+            .flatMap { _ in
+                self.tableView.isNearBottomEdge(edgeOffset: offset) ? Observable.just(()) : Observable.empty()
+        }
+
     }
     
 }
@@ -86,6 +101,16 @@ extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSo
         cell.viewModel = RepositoryItemViewModel(model: viewModel.dataSource[indexPath.row])
         
         return cell
+    }
+    
+}
+
+extension RepositoriesListViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isNearBottomEdge() {
+            print("fim")
+        }
     }
     
 }

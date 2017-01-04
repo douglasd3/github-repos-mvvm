@@ -43,7 +43,7 @@ extension NetworkClient {
         }
     }
     
-    fileprivate func loadRepositoriesPage(_ page: Int) -> Observable<[Repository]> {
+    func loadRepositoriesPage(_ page: Int) -> Observable<[Repository]> {
         return networkProvider
             .request(MultiTarget(GithubSearchRepositoriesRestApi.repositories(page)))
             .mapJSON()
