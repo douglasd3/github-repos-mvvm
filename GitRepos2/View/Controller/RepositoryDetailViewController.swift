@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import StatefulViewController
 
-class RepositoryDetailViewController: UIViewController {
+class RepositoryDetailViewController: UIViewController, LoadingStatePresentableViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,11 +28,29 @@ extension RepositoryDetailViewController {
         
         setup()
         
+        startLoading()
         viewModel.apiResponseHandler = {
             self.tableView.reloadData()
+            self.endLoading()
         }
         
         viewModel.fetchPullRequests()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupInitialViewState()
+    }
+    
+}
+
+// MARK: StatefulViewController
+
+extension RepositoryDetailViewController: StatefulViewController {
+    
+    func hasContent() -> Bool {
+        return viewModel.hasContent
     }
     
 }
@@ -43,7 +62,7 @@ extension RepositoryDetailViewController {
     fileprivate func setup() {
         setupNavigationBar()
         setupTableView()
-//        setupLoadingState()
+        setupLoadingState()
     }
     
     fileprivate func setupNavigationBar() {
@@ -68,7 +87,7 @@ extension RepositoryDetailViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PullRequestCell.self)) as! PullRequestCell
         
-        cell.viewModel = PullRequestItemViewModel(model: viewModel.dataSource[indexPath.row])//RepositoryItemViewModel(model: viewModel.dataSource[indexPath.row])
+        cell.viewModel = PullRequestItemViewModel(model: viewModel.dataSource[indexPath.row])
         
         return cell
     }

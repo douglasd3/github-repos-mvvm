@@ -21,9 +21,10 @@ class RepositoryDetailViewModel {
     fileprivate let disposeBag = DisposeBag()
     
     var apiResponseHandler: (()->Void)!
-//    var hasContent: Bool {
-//        return loadingStateVariable.value ? false : pullsVariable.value.count > 0
-//    }
+
+    var hasContent: Bool {
+        return dataSource.count > 0
+    }
     
     init(repository: Repository) {
         self.repository = repository    
