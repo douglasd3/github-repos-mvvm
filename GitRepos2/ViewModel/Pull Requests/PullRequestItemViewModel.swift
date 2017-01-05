@@ -38,3 +38,10 @@ class PullRequestItemViewModel {
     }
     
 }
+extension PullRequestItemViewModel {
+    
+func createDetailViewModel() -> PullRequestDetailViewModel {
+        return PullRequestDetailViewModel(model: model)
+    }
+    
+}

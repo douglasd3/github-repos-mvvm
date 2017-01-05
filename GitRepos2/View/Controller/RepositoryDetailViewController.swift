@@ -85,11 +85,16 @@ extension RepositoryDetailViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PullRequestCell.self)) as! PullRequestCell
+        let cell: PullRequestCell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pullRequestCell)!
         
         cell.viewModel = PullRequestItemViewModel(model: viewModel.dataSource[indexPath.row])
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! PullRequestCell
+        
+        viewModel.showPullRequestDetail(viewModel: cell.viewModel.createDetailViewModel())
     }
     
 }

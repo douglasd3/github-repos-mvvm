@@ -35,7 +35,7 @@ extension RepositoriesCoordinator {
         guard let viewController = R.storyboard.main.repositoryDetailViewController() else { return }
         guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
         
-        viewModel.coordinator = self
+        viewModel.coordinator = PullRequestsCoordinator(window: window)
         viewController.viewModel = viewModel
         currentNavigationController.pushViewController(viewController, animated: true)
     }

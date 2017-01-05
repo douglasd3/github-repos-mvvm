@@ -15,7 +15,7 @@ class RepositoryDetailViewModel {
     
     var dataSource: [PullRequest] = []
     
-    var coordinator: RepositoriesCoordinator!
+    var coordinator: PullRequestsCoordinator!
     let repository: Repository
     
     fileprivate let disposeBag = DisposeBag()
@@ -70,5 +70,9 @@ extension RepositoryDetailViewModel {
             }).addDisposableTo(disposeBag)
     }
     
+    func showPullRequestDetail(viewModel: PullRequestDetailViewModel)
+    {
+        coordinator.showRepoDetail(viewModel: viewModel)
+    }
 }
 
