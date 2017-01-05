@@ -40,8 +40,8 @@ class PullRequestItemViewModel: ViewModel {
 }
 extension PullRequestItemViewModel {
     
-func createDetailViewModel() -> PullRequestDetailViewModel {
-        return PullRequestDetailViewModel(model: model)
+    func createDetailViewModel(repository: Repository) -> PullRequestDetailViewModel {
+        return PullRequestDetailViewModel(pullRequest: model, repository: repository)
     }
     
 }

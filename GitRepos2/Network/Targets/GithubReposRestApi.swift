@@ -10,7 +10,7 @@ import Moya
 
 enum GithubReposRestApi {
     case pullRequests(owner: String, repo: String)
-    case pullRequestDetail(owner: String, repo: String, number: String)
+    case pullRequestDetail(owner: String, repo: String, number: Int)
 }
 
 extension GithubReposRestApi: GithubRestApi {

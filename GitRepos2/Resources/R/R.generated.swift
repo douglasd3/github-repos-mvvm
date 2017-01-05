@@ -99,31 +99,31 @@ struct R: Rswift.Validatable {
   
   /// This `R.segue` struct is generated, and contains static references to 2 view controllers.
   struct segue {
-    /// This struct is generated for `RepositoriesListViewController`, and contains static references to 1 segues.
-    struct repositoriesListViewController {
-      /// Segue identifier `DetailSegue`.
-      static let detailSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, RepositoriesListViewController, RepositoryDetailViewController> = Rswift.StoryboardSegueIdentifier(identifier: "DetailSegue")
+    /// This struct is generated for `PullRequestsListViewController`, and contains static references to 1 segues.
+    struct pullRequestsListViewController {
+      /// Segue identifier `PullRequestDetailSegue`.
+      static let pullRequestDetailSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, PullRequestsListViewController, PullRequestDetailViewController> = Rswift.StoryboardSegueIdentifier(identifier: "PullRequestDetailSegue")
       
-      /// Optionally returns a typed version of segue `DetailSegue`.
+      /// Optionally returns a typed version of segue `PullRequestDetailSegue`.
       /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func detailSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, RepositoriesListViewController, RepositoryDetailViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.repositoriesListViewController.detailSegue, segue: segue)
+      static func pullRequestDetailSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, PullRequestsListViewController, PullRequestDetailViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.pullRequestsListViewController.pullRequestDetailSegue, segue: segue)
       }
       
       fileprivate init() {}
     }
     
-    /// This struct is generated for `RepositoryDetailViewController`, and contains static references to 1 segues.
-    struct repositoryDetailViewController {
-      /// Segue identifier `PullRequestDetailSegue`.
-      static let pullRequestDetailSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, RepositoryDetailViewController, PullRequestDetailViewController> = Rswift.StoryboardSegueIdentifier(identifier: "PullRequestDetailSegue")
+    /// This struct is generated for `RepositoriesListViewController`, and contains static references to 1 segues.
+    struct repositoriesListViewController {
+      /// Segue identifier `DetailSegue`.
+      static let detailSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, RepositoriesListViewController, PullRequestsListViewController> = Rswift.StoryboardSegueIdentifier(identifier: "DetailSegue")
       
-      /// Optionally returns a typed version of segue `PullRequestDetailSegue`.
+      /// Optionally returns a typed version of segue `DetailSegue`.
       /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func pullRequestDetailSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, RepositoryDetailViewController, PullRequestDetailViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.repositoryDetailViewController.pullRequestDetailSegue, segue: segue)
+      static func detailSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, RepositoriesListViewController, PullRequestsListViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.repositoriesListViewController.detailSegue, segue: segue)
       }
       
       fileprivate init() {}
@@ -235,24 +235,24 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "Main"
       let pullRequestDetailViewController = StoryboardViewControllerResource<PullRequestDetailViewController>(identifier: "PullRequestDetailViewController")
+      let pullRequestsListViewController = StoryboardViewControllerResource<PullRequestsListViewController>(identifier: "PullRequestsListViewController")
       let repositoriesListViewController = StoryboardViewControllerResource<RepositoriesListViewController>(identifier: "RepositoriesListViewController")
-      let repositoryDetailViewController = StoryboardViewControllerResource<RepositoryDetailViewController>(identifier: "RepositoryDetailViewController")
       
       func pullRequestDetailViewController(_: Void = ()) -> PullRequestDetailViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: pullRequestDetailViewController)
+      }
+      
+      func pullRequestsListViewController(_: Void = ()) -> PullRequestsListViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: pullRequestsListViewController)
       }
       
       func repositoriesListViewController(_: Void = ()) -> RepositoriesListViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: repositoriesListViewController)
       }
       
-      func repositoryDetailViewController(_: Void = ()) -> RepositoryDetailViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: repositoryDetailViewController)
-      }
-      
       static func validate() throws {
-        if _R.storyboard.main().repositoryDetailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'repositoryDetailViewController' could not be loaded from storyboard 'Main' as 'RepositoryDetailViewController'.") }
         if _R.storyboard.main().pullRequestDetailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'pullRequestDetailViewController' could not be loaded from storyboard 'Main' as 'PullRequestDetailViewController'.") }
+        if _R.storyboard.main().pullRequestsListViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'pullRequestsListViewController' could not be loaded from storyboard 'Main' as 'PullRequestsListViewController'.") }
         if _R.storyboard.main().repositoriesListViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'repositoriesListViewController' could not be loaded from storyboard 'Main' as 'RepositoriesListViewController'.") }
       }
       

@@ -9,15 +9,13 @@
 import UIKit
 
 class PullRequestDetailViewController: UIViewController {
-
-    //var viewModel: RepositoryDetailViewModel!
     
     var viewModel: PullRequestDetailViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        viewModel.apiResponseHandler = { print(" RESPONSE: \(self.viewModel.pullRequestDetail?.toJSON())") }
+        viewModel.fetchPullRequest()
     }
 
     override func didReceiveMemoryWarning() {

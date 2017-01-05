@@ -18,7 +18,7 @@ class PullRequestsCoordinator: Coordinator {
     }
     
     func start(viewModel: PullRequestsListViewModel?) {
-        guard let viewController = R.storyboard.main.repositoryDetailViewController() else { return }
+        guard let viewController = R.storyboard.main.pullRequestsListViewController() else { return }
         guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
         
         viewModel?.coordinator = self
@@ -26,12 +26,13 @@ class PullRequestsCoordinator: Coordinator {
         currentNavigationController.pushViewController(viewController, animated: true)
     }
     
-    func showPullRequestDetail(viewModel: PullRequestDetailViewModel) {        
+    func showPullRequestDetail(viewModel: PullRequestDetailViewModel) {
         guard let viewController = R.storyboard.main.pullRequestDetailViewController() else { return }
 
         guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
         
         viewController.viewModel = viewModel
+    
         currentNavigationController.pushViewController(viewController, animated: true)
     }
     

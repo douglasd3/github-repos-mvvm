@@ -9,7 +9,7 @@
 import UIKit
 import StatefulViewController
 
-class RepositoryDetailViewController: UIViewController, LoadingStatePresentableViewController {
+class PullRequestsListViewController: UIViewController, LoadingStatePresentableViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +21,7 @@ class RepositoryDetailViewController: UIViewController, LoadingStatePresentableV
 
 // MARK: Life Cycle
 
-extension RepositoryDetailViewController {
+extension PullRequestsListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ extension RepositoryDetailViewController {
 
 // MARK: StatefulViewController
 
-extension RepositoryDetailViewController: StatefulViewController {
+extension PullRequestsListViewController: StatefulViewController {
     
     func hasContent() -> Bool {
         return viewModel.hasContent
@@ -57,7 +57,7 @@ extension RepositoryDetailViewController: StatefulViewController {
 
 // MARK: Setup UI
 
-extension RepositoryDetailViewController {
+extension PullRequestsListViewController {
     
     fileprivate func setup() {
         setupNavigationBar()
@@ -79,7 +79,7 @@ extension RepositoryDetailViewController {
     
 }
 
-extension RepositoryDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension PullRequestsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.dataSource.count
@@ -97,7 +97,7 @@ extension RepositoryDetailViewController: UITableViewDelegate, UITableViewDataSo
         let cell = tableView.cellForRow(at: indexPath) as! PullRequestCell
         
         print("teste")
-        viewModel.showPullRequestDetail(viewModel: cell.viewModel.createDetailViewModel())
+        viewModel.showPullRequestDetail(viewModel: cell.viewModel.createDetailViewModel(repository: viewModel.repository))
     }
     
 }

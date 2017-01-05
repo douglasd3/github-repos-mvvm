@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="-383.19999999999999" y="36.431784107946029"/>
         </scene>
-        <!--Repository Detail View Controller-->
+        <!--Pull Requests List View Controller-->
         <scene sceneID="1bf-SV-rBe">
             <objects>
-                <viewController storyboardIdentifier="RepositoryDetailViewController" id="7Rd-qG-GQb" customClass="RepositoryDetailViewController" customModule="GitRepos2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PullRequestsListViewController" id="7Rd-qG-GQb" customClass="PullRequestsListViewController" customModule="GitRepos2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u53-AC-ZGX"/>
                         <viewControllerLayoutGuide type="bottom" id="FJ2-gd-4s1"/>
@@ -75,7 +75,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BGH-sv-eMd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="7Rd-qG-GQb" id="fcv-wg-t5Z"/>

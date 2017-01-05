@@ -31,7 +31,7 @@
 		A51C81AA1E1C319900FA2654 /* LoadingStatePresentableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C81A91E1C319900FA2654 /* LoadingStatePresentableViewContoller.swift */; };
 		A51ECB711E1EAA0A006F11BE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51ECB701E1EAA0A006F11BE /* ViewModel.swift */; };
 		A58BAD0A1E1D5AA400C54AC1 /* ScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58BAD091E1D5AA400C54AC1 /* ScrollViewExtension.swift */; };
-		A5B49B261E1D62CA009D0ADD /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B49B251E1D62CA009D0ADD /* RepositoryDetailViewController.swift */; };
+		A5B49B261E1D62CA009D0ADD /* PullRequestsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B49B251E1D62CA009D0ADD /* PullRequestsListViewController.swift */; };
 		A5B49B2B1E1D6556009D0ADD /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B49B2A1E1D6556009D0ADD /* PullRequest.swift */; };
 		A5B49B2E1E1D698F009D0ADD /* PullRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B49B2C1E1D698F009D0ADD /* PullRequestCell.swift */; };
 		A5B49B2F1E1D698F009D0ADD /* PullRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B49B2D1E1D698F009D0ADD /* PullRequestCell.xib */; };
@@ -89,7 +89,7 @@
 		A51C81A91E1C319900FA2654 /* LoadingStatePresentableViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingStatePresentableViewContoller.swift; sourceTree = "<group>"; };
 		A51ECB701E1EAA0A006F11BE /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A58BAD091E1D5AA400C54AC1 /* ScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewExtension.swift; sourceTree = "<group>"; };
-		A5B49B251E1D62CA009D0ADD /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
+		A5B49B251E1D62CA009D0ADD /* PullRequestsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestsListViewController.swift; sourceTree = "<group>"; };
 		A5B49B2A1E1D6556009D0ADD /* PullRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequest.swift; sourceTree = "<group>"; };
 		A5B49B2C1E1D698F009D0ADD /* PullRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestCell.swift; sourceTree = "<group>"; };
 		A5B49B2D1E1D698F009D0ADD /* PullRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullRequestCell.xib; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				A51C81891E1BDE5200FA2654 /* RepositoriesListViewController.swift */,
-				A5B49B251E1D62CA009D0ADD /* RepositoryDetailViewController.swift */,
+				A5B49B251E1D62CA009D0ADD /* PullRequestsListViewController.swift */,
 				DE41670F1E1E7CC400754407 /* PullRequestDetailViewController.swift */,
 			);
 			path = Controller;
@@ -664,7 +664,7 @@
 				DE41670E1E1E7A4400754407 /* PullRequestDetail.swift in Sources */,
 				A51C818A1E1BDE5200FA2654 /* RepositoriesListViewController.swift in Sources */,
 				A51C81A11E1C1E2000FA2654 /* StringExtension.swift in Sources */,
-				A5B49B261E1D62CA009D0ADD /* RepositoryDetailViewController.swift in Sources */,
+				A5B49B261E1D62CA009D0ADD /* PullRequestsListViewController.swift in Sources */,
 				A5B49B2E1E1D698F009D0ADD /* PullRequestCell.swift in Sources */,
 				A51C819B1E1C10CF00FA2654 /* Repository.swift in Sources */,
 				A51C81A61E1C1F1F00FA2654 /* NetworkClient.swift in Sources */,
