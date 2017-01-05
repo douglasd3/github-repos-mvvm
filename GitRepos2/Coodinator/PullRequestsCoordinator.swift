@@ -17,12 +17,12 @@ class PullRequestsCoordinator: Coordinator {
         self.window = window
     }
     
-    func start(viewModel: ViewModel?) {
+    func start(viewModel: RepositoryDetailViewModel?) {
         guard let viewController = R.storyboard.main.repositoryDetailViewController() else { return }
         guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
         
-        (viewModel as! RepositoryDetailViewModel!).coordinator = self
-        viewController.viewModel = viewModel as! RepositoryDetailViewModel!
+        viewModel?.coordinator = self
+        viewController.viewModel = viewModel
         currentNavigationController.pushViewController(viewController, animated: true)
     }
     

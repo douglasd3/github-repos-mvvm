@@ -12,13 +12,13 @@ protocol Coordinator: class {
     
     init(window: UIWindow)
     
-    func start(viewModel: ViewModel?)
+    func start<T>(viewModel: T?) where T:ViewModel
     
 }
 
 extension Coordinator {
     
-    func start(viewModel: ViewModel? = nil) {
+    func start<T>(viewModel: T? = nil) where T:ViewModel {        
         start(viewModel: viewModel)
     }
     
