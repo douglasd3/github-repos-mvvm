@@ -12,6 +12,14 @@ protocol Coordinator: class {
     
     init(window: UIWindow)
     
-    func start()
+    func start(viewModel: ViewModel?)
+    
+}
+
+extension Coordinator {
+    
+    func start(viewModel: ViewModel? = nil) {
+        start(viewModel: viewModel)
+    }
     
 }

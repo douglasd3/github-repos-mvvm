@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class PullRequestDetailViewModel {
+class PullRequestDetailViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
     

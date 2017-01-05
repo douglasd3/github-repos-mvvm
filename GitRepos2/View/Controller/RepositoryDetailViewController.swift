@@ -74,6 +74,7 @@ extension RepositoryDetailViewController {
     fileprivate func setupTableView() {
         tableView.register(R.nib.pullRequestCell)
         tableView.rowHeight = 112
+        tableView.delegate = self
     }
     
 }
@@ -91,9 +92,11 @@ extension RepositoryDetailViewController: UITableViewDelegate, UITableViewDataSo
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! PullRequestCell
         
+        print("teste")
         viewModel.showPullRequestDetail(viewModel: cell.viewModel.createDetailViewModel())
     }
     

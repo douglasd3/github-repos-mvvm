@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class RepositoriesListViewModel {
+class RepositoriesListViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
     

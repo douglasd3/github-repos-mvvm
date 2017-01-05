@@ -9,7 +9,7 @@
 import Foundation
 import SwiftDate
 
-class PullRequestItemViewModel {
+class PullRequestItemViewModel: ViewModel {
     
     let model: PullRequest
     

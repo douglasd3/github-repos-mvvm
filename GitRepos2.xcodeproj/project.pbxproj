@@ -29,6 +29,7 @@
 		A51C81A61E1C1F1F00FA2654 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C81A51E1C1F1F00FA2654 /* NetworkClient.swift */; };
 		A51C81A81E1C23D100FA2654 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C81A71E1C23D100FA2654 /* User.swift */; };
 		A51C81AA1E1C319900FA2654 /* LoadingStatePresentableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C81A91E1C319900FA2654 /* LoadingStatePresentableViewContoller.swift */; };
+		A51ECB711E1EAA0A006F11BE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51ECB701E1EAA0A006F11BE /* ViewModel.swift */; };
 		A58BAD0A1E1D5AA400C54AC1 /* ScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58BAD091E1D5AA400C54AC1 /* ScrollViewExtension.swift */; };
 		A5B49B261E1D62CA009D0ADD /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B49B251E1D62CA009D0ADD /* RepositoryDetailViewController.swift */; };
 		A5B49B291E1D633B009D0ADD /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B49B281E1D633B009D0ADD /* RepositoryDetailViewModel.swift */; };
@@ -86,6 +87,7 @@
 		A51C81A51E1C1F1F00FA2654 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		A51C81A71E1C23D100FA2654 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A51C81A91E1C319900FA2654 /* LoadingStatePresentableViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingStatePresentableViewContoller.swift; sourceTree = "<group>"; };
+		A51ECB701E1EAA0A006F11BE /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A58BAD091E1D5AA400C54AC1 /* ScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewExtension.swift; sourceTree = "<group>"; };
 		A5B49B251E1D62CA009D0ADD /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		A5B49B281E1D633B009D0ADD /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				A51C81841E1BDBF000FA2654 /* Coordinator.swift */,
 				A51C819E1E1C1DF200FA2654 /* GithubRestApi.swift */,
 				A51C81A91E1C319900FA2654 /* LoadingStatePresentableViewContoller.swift */,
+				A51ECB701E1EAA0A006F11BE /* ViewModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				A51C81931E1BE6CF00FA2654 /* R.generated.swift in Sources */,
 				A51C81A41E1C1E9C00FA2654 /* GithubSearchRepositoriesRestApi.swift in Sources */,
 				A51C81881E1BDD4600FA2654 /* AppCoordinator.swift in Sources */,
+				A51ECB711E1EAA0A006F11BE /* ViewModel.swift in Sources */,
 				A51C81AA1E1C319900FA2654 /* LoadingStatePresentableViewContoller.swift in Sources */,
 				DE4167101E1E7CC400754407 /* PullRequestDetailViewController.swift in Sources */,
 				A58BAD0A1E1D5AA400C54AC1 /* ScrollViewExtension.swift in Sources */,

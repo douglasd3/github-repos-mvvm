@@ -12,7 +12,6 @@ class AppCoordinator: Coordinator {
     
     enum CoordinatorKey: String {
         case repositories
-        case pullRequests
     }
     
     var window: UIWindow

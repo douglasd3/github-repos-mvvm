@@ -16,17 +16,23 @@ class PullRequestsCoordinator: Coordinator {
     required init(window: UIWindow) {
         self.window = window
     }
-    func start() {
-      
+    
+    func start(viewModel: ViewModel?) {
+        guard let viewController = R.storyboard.main.repositoryDetailViewController() else { return }
+        guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
+        
+        (viewModel as! RepositoryDetailViewModel!).coordinator = self
+        viewController.viewModel = viewModel as! RepositoryDetailViewModel!
+        currentNavigationController.pushViewController(viewController, animated: true)
     }
-    func showPullRequestDetail(viewModel: PullRequestDetailViewModel) {
-        
+    
+    func showPullRequestDetail(viewModel: PullRequestDetailViewModel) {        
         guard let viewController = R.storyboard.main.pullRequestDetailViewController() else { return }
+
+        guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
         
-//        let viewModel = PullRequestDetailViewModel()
-        viewModel.coordinator = self
         viewController.viewModel = viewModel
-//        window.rootViewController = navigationController
+        currentNavigationController.pushViewController(viewController, animated: true)
     }
     
 }

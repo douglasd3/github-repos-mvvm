@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RepositoryItemViewModel {
+class RepositoryItemViewModel: ViewModel {
     
     let model: Repository
     

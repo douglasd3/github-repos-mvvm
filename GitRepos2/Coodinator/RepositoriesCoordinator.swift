@@ -32,12 +32,8 @@ class RepositoriesCoordinator: Coordinator {
 extension RepositoriesCoordinator {
     
     func showRepoDetail(viewModel: RepositoryDetailViewModel) {
-        guard let viewController = R.storyboard.main.repositoryDetailViewController() else { return }
-        guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
-        
-        viewModel.coordinator = PullRequestsCoordinator(window: window)
-        viewController.viewModel = viewModel
-        currentNavigationController.pushViewController(viewController, animated: true)
+        let pullRequestCoordinator = PullRequestsCoordinator(window: window)
+        pullRequestCoordinator.start(viewModel: viewModel)
     }
     
 }

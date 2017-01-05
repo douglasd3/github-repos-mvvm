@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class RepositoryDetailViewModel {
+class RepositoryDetailViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
     
@@ -70,9 +70,8 @@ extension RepositoryDetailViewModel {
             }).addDisposableTo(disposeBag)
     }
     
-    func showPullRequestDetail(viewModel: PullRequestDetailViewModel)
-    {
-        coordinator.showRepoDetail(viewModel: viewModel)
+    func showPullRequestDetail(viewModel: PullRequestDetailViewModel) {
+        coordinator.showPullRequestDetail(viewModel: viewModel)
     }
 }
 
