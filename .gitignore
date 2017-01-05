@@ -31,3 +31,4 @@ Carthage
 # AppCode specific files
 .idea/
 *.iml
+R.generated.swift

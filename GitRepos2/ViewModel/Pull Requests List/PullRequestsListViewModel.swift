@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class RepositoryDetailViewModel: ViewModel {
+class PullRequestsListViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
     
@@ -34,7 +34,7 @@ class RepositoryDetailViewModel: ViewModel {
 
 // MARK: Computed Property
 
-extension RepositoryDetailViewModel {
+extension PullRequestsListViewModel {
     
     var repositoryName: String {
         return repository.name
@@ -60,7 +60,7 @@ extension RepositoryDetailViewModel {
 }
 
 
-extension RepositoryDetailViewModel {
+extension PullRequestsListViewModel {
     
     func fetchPullRequests() {
         apiClient.loadPullRequest(forRepo: repository.name, owner: repository.owner.login)

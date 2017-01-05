@@ -17,7 +17,7 @@ class PullRequestsCoordinator: Coordinator {
         self.window = window
     }
     
-    func start(viewModel: RepositoryDetailViewModel?) {
+    func start(viewModel: PullRequestsListViewModel?) {
         guard let viewController = R.storyboard.main.repositoryDetailViewController() else { return }
         guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
         

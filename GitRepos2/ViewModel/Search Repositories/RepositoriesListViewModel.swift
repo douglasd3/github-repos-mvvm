@@ -47,7 +47,7 @@ extension RepositoriesListViewModel {
             }).addDisposableTo(disposeBag)
     }
     
-    func showRepoDetail(item: RepositoryDetailViewModel) {
+    func showRepoDetail(item: PullRequestsListViewModel) {
         coordinator.showRepoDetail(viewModel: item)
     }
     

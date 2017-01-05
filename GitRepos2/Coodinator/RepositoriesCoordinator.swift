@@ -31,7 +31,7 @@ class RepositoriesCoordinator: Coordinator {
 
 extension RepositoriesCoordinator {
     
-    func showRepoDetail(viewModel: RepositoryDetailViewModel) {
+    func showRepoDetail(viewModel: PullRequestsListViewModel) {
         let pullRequestCoordinator = PullRequestsCoordinator(window: window)
         pullRequestCoordinator.start(viewModel: viewModel)
     }

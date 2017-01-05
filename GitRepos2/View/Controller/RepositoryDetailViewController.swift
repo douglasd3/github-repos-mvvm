@@ -15,7 +15,7 @@ class RepositoryDetailViewController: UIViewController, LoadingStatePresentableV
     
     //fileprivate let dataSource = RxTableViewSectionedReloadDataSource<SectionViewModel<PullRequestItemViewModel>>()
     
-    var viewModel: RepositoryDetailViewModel!
+    var viewModel: PullRequestsListViewModel!
     
 }
 
