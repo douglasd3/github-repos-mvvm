@@ -20,7 +20,7 @@ class PullRequestsListViewModel: ViewModel {
     
     fileprivate let disposeBag = DisposeBag()
     
-    fileprivate var delegate: ViewModelDelegate!
+    var delegate: ViewModelDelegate!
 
     var hasContent: Bool {
         return dataSource.count > 0

@@ -21,7 +21,7 @@ class PullRequestDetailViewModel: ViewModel {
     
     fileprivate let disposeBag = DisposeBag()
         
-    fileprivate var delegate: ViewModelDelegate!
+    var delegate: ViewModelDelegate!
     
     init(pullRequest: PullRequest, repository: Repository) {
         self.pullRequest = pullRequest
