@@ -9,3 +9,17 @@
 import Foundation
 
 protocol ViewModel {}
+
+protocol ViewModelDelegate {
+    
+    func apiCallDidFinish(error: Error?)
+    
+}
+
+extension ViewModelDelegate {
+    
+    func apiCallDidFinish(error: Error? = nil) {
+        apiCallDidFinish(error: error)
+    }
+}
+

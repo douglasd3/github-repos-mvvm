@@ -25,14 +25,8 @@ extension RepositoriesListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("print")
-        
+        viewModel.delegate = self        
         setup()
-        viewModel.apiResponseHandler = {
-            self.tableView.reloadData()
-            self.endLoading()
-        }
-        
         startLoading()
         viewModel.fetchRepositories()
     }
@@ -89,6 +83,8 @@ extension RepositoriesListViewController {
     
 }
 
+// MARK: TableViewDelegate and DataSource
+
 extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,6 +115,22 @@ extension RepositoriesListViewController: UIScrollViewDelegate {
             
         }
     }
+    
+}
+
+// MARK: ViewModelDelegate
+
+extension RepositoriesListViewController: ViewModelDelegate {
+    
+    func apiCallDidFinish(error: Error?) {
+        guard error != nil else {
+            self.tableView.reloadData()
+            self.endLoading()
+            
+            return
+        }
+    }
+
     
 }
 
