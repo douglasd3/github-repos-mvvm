@@ -21,7 +21,17 @@ class PullRequestDetailViewModel: ViewModel {
     
     fileprivate let disposeBag = DisposeBag()
         
-    var delegate: ViewModelDelegate!
+    fileprivate var delegate: ViewModelDelegate!
+    
+    init(pullRequest: PullRequest, repository: Repository) {
+        self.pullRequest = pullRequest
+        self.repository = repository
+    }
+}
+
+// MARK: Computed Property
+
+extension PullRequestDetailViewModel {
     
     var pullRequestTitle: String? {
         return pullRequestDetail?.title
@@ -43,11 +53,8 @@ class PullRequestDetailViewModel: ViewModel {
         return pullRequestDetail != nil
     }
     
-    init(pullRequest: PullRequest, repository: Repository) {
-        self.pullRequest = pullRequest
-        self.repository = repository
-    }
 }
+
 extension PullRequestDetailViewModel {
     
     func fetchPullRequest() {

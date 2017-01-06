@@ -16,7 +16,7 @@ class RepositoriesListViewModel: ViewModel {
     var nextPageTrigger: Observable<Void> = .empty()
     fileprivate let disposeBag = DisposeBag()
         
-    var delegate: ViewModelDelegate!
+    fileprivate var delegate: ViewModelDelegate!
     
     var dataSource: [Repository] = []
     
