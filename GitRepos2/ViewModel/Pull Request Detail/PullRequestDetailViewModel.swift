@@ -23,6 +23,22 @@ class PullRequestDetailViewModel: ViewModel {
     
     var apiResponseHandler: (()->Void)!
     
+    var pullRequestTitle: String? {
+        return pullRequestDetail?.title
+    }
+    
+    var pullRequestDescription: String? {
+        return pullRequestDetail?.body
+    }
+    
+    var pullRequestState: String? {
+        return pullRequestDetail?.state
+    }
+    
+    var pullRequestNumber: String? {
+        return String(pullRequest.number)
+    }
+    
     init(pullRequest: PullRequest, repository: Repository) {
         self.pullRequest = pullRequest
         self.repository = repository

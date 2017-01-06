@@ -79,6 +79,8 @@ extension PullRequestsListViewController {
     
 }
 
+// MARK: TableViewDelegate and DataSource
+
 extension PullRequestsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
