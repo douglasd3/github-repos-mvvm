@@ -20,7 +20,6 @@ class PullRequestsListViewModel: ViewModel {
     
     fileprivate let disposeBag = DisposeBag()
     
-    //var apiResponseHandler: (()->Void)!
     var delegate: ViewModelDelegate!
 
     var hasContent: Bool {

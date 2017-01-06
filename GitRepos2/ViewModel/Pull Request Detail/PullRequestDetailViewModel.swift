@@ -20,8 +20,8 @@ class PullRequestDetailViewModel: ViewModel {
     var coordinator: PullRequestsCoordinator!
     
     fileprivate let disposeBag = DisposeBag()
-    
-    var apiResponseHandler: (()->Void)!
+        
+    var delegate: ViewModelDelegate!
     
     var pullRequestTitle: String? {
         return pullRequestDetail?.title
@@ -55,7 +55,9 @@ extension PullRequestDetailViewModel {
             .subscribe(onNext: {
                 (pullRequestDetail) in
                 self.pullRequestDetail = pullRequestDetail
-                self.apiResponseHandler()
+                self.delegate.apiCallDidFinish()
+            }, onError: { error in
+                self.delegate.apiCallDidFinish(error: error)
             }).addDisposableTo(disposeBag)
     }
     

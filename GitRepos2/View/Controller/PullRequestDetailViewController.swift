@@ -20,16 +20,8 @@ class PullRequestDetailViewController: UIViewController, LoadingStatePresentable
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
-        viewModel.apiResponseHandler = {
-            self.titleLabel.text = self.viewModel.pullRequestTitle
-            self.descriptionLabel.text = self.viewModel.pullRequestDescription
-            self.statusLabel.text = self.viewModel.pullRequestState
-            self.statusLabel.textColor = self.viewModel.pullRequestState == "open" ? Color.green : Color.red
-            self.endLoading()
-        }
-        
         startLoading()
+        viewModel.delegate = self
         viewModel.fetchPullRequest()
     }
 
@@ -56,6 +48,25 @@ extension PullRequestDetailViewController {
     func setupNavigationBar() {
         if let number = viewModel.pullRequestNumber {
             title = "#\(number)"
+        }
+    }
+    
+}
+
+// MARK: ViewModelDelegate
+
+extension PullRequestDetailViewController: ViewModelDelegate {
+    
+    func apiCallDidFinish(error: Error?) {
+        if let error = error {
+            endLoading(error: error)
+        }
+        else {
+            titleLabel.text = viewModel.pullRequestTitle
+            descriptionLabel.text = viewModel.pullRequestDescription
+            statusLabel.text = viewModel.pullRequestState
+            statusLabel.textColor = viewModel.pullRequestState == "open" ? Color.green : Color.red
+            endLoading()
         }
     }
     
