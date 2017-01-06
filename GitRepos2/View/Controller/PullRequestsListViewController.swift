@@ -25,15 +25,9 @@ extension PullRequestsListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
-        
         startLoading()
-        viewModel.apiResponseHandler = {            
-            self.tableView.reloadData()
-            self.endLoading()
-        }
-        
+        viewModel.delegate = self
         viewModel.fetchPullRequests()
     }
     
@@ -100,6 +94,22 @@ extension PullRequestsListViewController: UITableViewDelegate, UITableViewDataSo
         let cell = tableView.cellForRow(at: indexPath) as! PullRequestCell
         
         viewModel.showPullRequestDetail(viewModel: cell.viewModel.createDetailViewModel(repository: viewModel.repository))
+    }
+    
+}
+
+// MARK: ViewModelDelegate
+
+extension PullRequestsListViewController: ViewModelDelegate {
+    
+    func apiCallDidFinish(error: Error?) {
+        if let error = error {
+            endLoading(error: error)
+        }
+        else {
+            tableView.reloadData()
+            endLoading()
+        }
     }
     
 }

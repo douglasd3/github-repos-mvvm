@@ -30,4 +30,11 @@ extension GithubReposRestApi: GithubRestApi {
         return "{}".data(using: String.Encoding.utf8)!
     }
     
+    var validate: Bool {
+        switch self {
+        case .pullRequests, .pullRequestDetail:
+            return true
+        }
+    }
+    
 }

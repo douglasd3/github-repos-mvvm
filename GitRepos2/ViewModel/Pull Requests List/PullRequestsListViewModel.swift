@@ -20,7 +20,8 @@ class PullRequestsListViewModel: ViewModel {
     
     fileprivate let disposeBag = DisposeBag()
     
-    var apiResponseHandler: (()->Void)!
+    //var apiResponseHandler: (()->Void)!
+    var delegate: ViewModelDelegate!
 
     var hasContent: Bool {
         return dataSource.count > 0
@@ -40,23 +41,6 @@ extension PullRequestsListViewModel {
         return repository.name
     }
     
-//    var pullRequests: Driver<[SectionViewModel<PullRequestItemViewModel>]> {
-//        return pullsViewModel
-//            .asDriver(onErrorJustReturn: [])
-//            .map {
-//                [SectionViewModel(viewModels: $0)]
-//        }
-//    }
-//    
-//    var pullsViewModel: Observable<[PullRequestItemViewModel]> {
-//        return pullsVariable.asObservable()
-//            .map { (pulls) in
-//                return pulls.map { repo in
-//                    return PullRequestItemViewModel(model: repo)
-//                }
-//        }
-//    }
-    
 }
 
 
@@ -66,7 +50,10 @@ extension PullRequestsListViewModel {
         apiClient.loadPullRequest(forRepo: repository.name, owner: repository.owner.login)
             .subscribe(onNext: { (pulls) in
                 self.dataSource = pulls
-                self.apiResponseHandler()
+                self.delegate.apiCallDidFinish()
+                
+            }, onError: { error in
+                self.delegate.apiCallDidFinish(error: error)
             }).addDisposableTo(disposeBag)
     }
     

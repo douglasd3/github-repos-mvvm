@@ -131,7 +131,6 @@ extension RepositoriesListViewController: ViewModelDelegate {
             endLoading()
         }
     }
-
     
 }
 

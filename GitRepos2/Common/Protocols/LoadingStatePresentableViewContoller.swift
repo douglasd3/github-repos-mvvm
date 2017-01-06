@@ -15,6 +15,7 @@ protocol LoadingStatePresentableViewController {
     func setupLoadingState()
 }
 
+
 extension LoadingStatePresentableViewController where Self: UIViewController, Self: StatefulViewController {
     
     func setupLoadingState() {
@@ -46,7 +47,6 @@ extension LoadingStatePresentableViewController where Self: UIViewController, Se
         errorView = UIView()
         errorView?.backgroundColor = Color.white
         errorView?.addSubview(errorButton)
-        
-    }
+    }    
     
 }
