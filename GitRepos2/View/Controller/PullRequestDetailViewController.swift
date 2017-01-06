@@ -8,8 +8,9 @@
 
 import UIKit
 import SwiftyColor
+import StatefulViewController
 
-class PullRequestDetailViewController: UIViewController {
+class PullRequestDetailViewController: UIViewController, LoadingStatePresentableViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -25,16 +26,34 @@ class PullRequestDetailViewController: UIViewController {
             self.descriptionLabel.text = self.viewModel.pullRequestDescription
             self.statusLabel.text = self.viewModel.pullRequestState
             self.statusLabel.textColor = self.viewModel.pullRequestState == "open" ? Color.green : Color.red
+            self.endLoading()
         }
         
+        startLoading()
         viewModel.fetchPullRequest()
     }
 
 }
 
+// MARK: StatefulViewController
+
+extension PullRequestDetailViewController: StatefulViewController {
+    
+    func hasContent() -> Bool {
+        return viewModel.hasContent
+    }
+    
+}
+
+
 extension PullRequestDetailViewController {
     
     func setup() {
+        setupNavigationBar()
+        setupLoadingState()
+    }
+    
+    func setupNavigationBar() {
         if let number = viewModel.pullRequestNumber {
             title = "#\(number)"
         }

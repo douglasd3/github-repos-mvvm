@@ -104,6 +104,7 @@ extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! RepositoryCell
         
         viewModel.showRepoDetail(item: cell.viewModel.createDetailViewModel())
@@ -115,7 +116,7 @@ extension RepositoriesListViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.isNearBottomEdge() {
-            print("fim")
+            
         }
     }
     

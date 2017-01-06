@@ -96,9 +96,9 @@ extension PullRequestsListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! PullRequestCell
         
-        print("teste")
         viewModel.showPullRequestDetail(viewModel: cell.viewModel.createDetailViewModel(repository: viewModel.repository))
     }
     

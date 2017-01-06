@@ -39,6 +39,10 @@ class PullRequestDetailViewModel: ViewModel {
         return String(pullRequest.number)
     }
     
+    var hasContent: Bool {
+        return pullRequestDetail != nil
+    }
+    
     init(pullRequest: PullRequest, repository: Repository) {
         self.pullRequest = pullRequest
         self.repository = repository
