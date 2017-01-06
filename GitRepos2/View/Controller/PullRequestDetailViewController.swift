@@ -20,7 +20,7 @@ class PullRequestDetailViewController: UIViewController {
         super.viewDidLoad()
         setup()
         
-        viewModel.apiResponseHandler = {            
+        viewModel.apiResponseHandler = {
             self.titleLabel.text = self.viewModel.pullRequestTitle
             self.descriptionLabel.text = self.viewModel.pullRequestDescription
             self.statusLabel.text = self.viewModel.pullRequestState
