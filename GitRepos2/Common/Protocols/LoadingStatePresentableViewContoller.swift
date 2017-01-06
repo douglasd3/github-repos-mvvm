@@ -9,6 +9,7 @@
 import Foundation
 import StatefulViewController
 import SpringIndicator
+import SwiftyColor
 
 protocol LoadingStatePresentableViewController {
     func setupLoadingState()
@@ -28,7 +29,7 @@ extension LoadingStatePresentableViewController where Self: UIViewController, Se
         loadingView = UIView()
         loadingView?.isUserInteractionEnabled = false
         loadingView?.backgroundColor = UIColor.white
-        loadingView?.addSubview(indicatorContainer)                
+        loadingView?.addSubview(indicatorContainer)
         
         indicatorContainer.translatesAutoresizingMaskIntoConstraints = false
         
@@ -36,6 +37,16 @@ extension LoadingStatePresentableViewController where Self: UIViewController, Se
         NSLayoutConstraint(item: indicatorContainer, attribute: .height, relatedBy: .equal, toItem: indicator, attribute: .height, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: indicatorContainer, attribute: .centerX, relatedBy: .equal, toItem: loadingView, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: indicatorContainer, attribute: .centerY, relatedBy: .equal, toItem: loadingView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+        
+        let errorButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        errorButton.center = view.center
+        errorButton.setTitle("Retry", for: .normal)
+        errorButton.setTitleColor(Color.red, for: .normal)
+        
+        errorView = UIView()
+        errorView?.backgroundColor = Color.white
+        errorView?.addSubview(errorButton)
+        
     }
     
 }

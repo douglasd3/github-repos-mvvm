@@ -42,6 +42,8 @@ extension RepositoriesListViewModel {
             .subscribe(onNext: { (repositories) in
                 self.dataSource = repositories
                 self.delegate.apiCallDidFinish()
+            }, onError: { error in
+                self.delegate.apiCallDidFinish(error: error)
             }).addDisposableTo(disposeBag)
     }
     

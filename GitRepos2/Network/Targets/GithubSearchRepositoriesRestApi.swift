@@ -32,4 +32,11 @@ extension GithubSearchRepositoriesRestApi: GithubRestApi {
         }
     }
     
+    var validate: Bool {
+        switch self {
+        case .repositories:
+            return true
+        }
+    }
+    
 }

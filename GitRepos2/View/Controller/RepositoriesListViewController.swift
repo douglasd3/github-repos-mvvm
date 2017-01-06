@@ -101,7 +101,7 @@ extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! RepositoryCell
+        let cell = tableView.cellForRow(at: indexPath) as! RepositoryCell                
         
         viewModel.showRepoDetail(item: cell.viewModel.createDetailViewModel())
     }
@@ -122,12 +122,13 @@ extension RepositoriesListViewController: UIScrollViewDelegate {
 
 extension RepositoriesListViewController: ViewModelDelegate {
     
-    func apiCallDidFinish(error: Error?) {
-        guard error != nil else {
-            self.tableView.reloadData()
-            self.endLoading()
-            
-            return
+    func apiCallDidFinish(error: Error?) {        
+        if let error = error {
+            endLoading(error: error)
+        }
+        else {
+            tableView.reloadData()
+            endLoading()
         }
     }
 

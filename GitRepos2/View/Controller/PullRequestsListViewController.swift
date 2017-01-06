@@ -29,7 +29,7 @@ extension PullRequestsListViewController {
         setup()
         
         startLoading()
-        viewModel.apiResponseHandler = {
+        viewModel.apiResponseHandler = {            
             self.tableView.reloadData()
             self.endLoading()
         }
