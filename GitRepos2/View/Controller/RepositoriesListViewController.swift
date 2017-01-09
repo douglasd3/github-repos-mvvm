@@ -28,7 +28,7 @@ extension RepositoriesListViewController {
         viewModel.delegate = self        
         setup()
         startLoading()
-        viewModel.fetchRepositories()
+        viewModel.loadRepositoryPage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,10 +74,10 @@ extension RepositoriesListViewController {
     fileprivate func setupTableViewDataSource() {
         
         let offset = view.bounds.height * 0.6
-        viewModel.nextPageTrigger = tableView.rx.contentOffset
-            .flatMap { _ in
-                self.tableView.isNearBottomEdge(edgeOffset: offset) ? Observable.just(()) : Observable.empty()
-        }
+//        viewModel.nextPageTrigger = tableView.rx.contentOffset
+//            .flatMap { _ in
+//                self.tableView.isNearBottomEdge(edgeOffset: offset) ? Observable.just(()) : Observable.empty()
+//        }
 
     }
     
@@ -111,10 +111,29 @@ extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSo
 extension RepositoriesListViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.isNearBottomEdge() {
-            
+//        if scrollView.isNearBottomEdge() {
+//            print("did scroll")
+//        }
+        
+        let offset = view.bounds.height * 0.6
+        if (scrollView.isNearBottomEdge(edgeOffset: offset)) {
+            if !viewModel.isLoadingPage {
+                print("chego")
+                viewModel.loadRepositoryPage()
+            }
         }
+
     }
+    
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        print("chego 1")
+//        let offset = view.bounds.height * 0.6
+//        if (scrollView.isNearBottomEdge(edgeOffset: offset)) {
+//            if !viewModel.isLoadingPage {
+//                print("chego")
+//            }
+//        }
+//    }
     
 }
 

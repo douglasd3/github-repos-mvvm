@@ -13,7 +13,7 @@ class RepositoriesListViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
     
-    var nextPageTrigger: Observable<Void> = .empty()
+    //var nextPageTrigger: Observable<Void> = .empty()
     fileprivate let disposeBag = DisposeBag()
         
     var delegate: ViewModelDelegate!
@@ -21,6 +21,9 @@ class RepositoriesListViewModel: ViewModel {
     var dataSource: [Repository] = []
     
     var coordinator: RepositoriesCoordinator!
+    
+    var isLoadingPage = false
+    var page = 1
     
     var hasContent: Bool {
         return dataSource.count > 0
@@ -36,14 +39,28 @@ class RepositoriesListViewModel: ViewModel {
 
 extension RepositoriesListViewModel {
     
-    func fetchRepositories() {
-        apiClient.searchRepositories(nextPageTrigger: nextPageTrigger)
-            .skip(1)
+//    func fetchRepositories() {
+//        apiClient.searchRepositories(nextPageTrigger: nextPageTrigger)
+//            .skip(1)
+//            .subscribe(onNext: { (repositories) in
+//                self.dataSource = repositories
+//                self.delegate.apiCallDidFinish()
+//            }, onError: { error in
+//                self.delegate.apiCallDidFinish(error: error)
+//            }).addDisposableTo(disposeBag)
+//    }
+    
+    func loadRepositoryPage() {
+        isLoadingPage = true
+        apiClient.loadRepositoriesPage(page)
             .subscribe(onNext: { (repositories) in
-                self.dataSource = repositories
+                self.dataSource.append(contentsOf: repositories)
                 self.delegate.apiCallDidFinish()
+                self.isLoadingPage = false
+                self.page += 1
             }, onError: { error in
                 self.delegate.apiCallDidFinish(error: error)
+                self.isLoadingPage = false
             }).addDisposableTo(disposeBag)
     }
     
