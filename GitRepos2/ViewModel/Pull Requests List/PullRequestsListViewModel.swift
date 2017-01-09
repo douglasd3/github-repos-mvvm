@@ -12,19 +12,13 @@ import RxSwift
 class PullRequestsListViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
-    
-    var dataSource: [PullRequest] = []
-    
-    var coordinator: PullRequestsCoordinator!
-    let repository: Repository
-    
     fileprivate let disposeBag = DisposeBag()
     
+    let repository: Repository
+    
+    var dataSource: [PullRequest] = []
+    var coordinator: PullRequestsCoordinator!
     var delegate: ViewModelDelegate!
-
-    var hasContent: Bool {
-        return dataSource.count > 0
-    }
     
     init(repository: Repository) {
         self.repository = repository    
@@ -36,10 +30,17 @@ class PullRequestsListViewModel: ViewModel {
 
 extension PullRequestsListViewModel {
     
+    var hasContent: Bool {
+        return dataSource.count > 0
+    }
+    
     var repositoryName: String {
         return repository.name
     }
+    
 }
+
+// MARK: Helpers
 
 extension PullRequestsListViewModel {
     
@@ -57,5 +58,6 @@ extension PullRequestsListViewModel {
     func showPullRequestDetail(viewModel: PullRequestDetailViewModel) {
         coordinator.showPullRequestDetail(viewModel: viewModel)
     }
+    
 }
 

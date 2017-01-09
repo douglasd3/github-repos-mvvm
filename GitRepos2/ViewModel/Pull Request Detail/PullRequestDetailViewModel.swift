@@ -12,15 +12,13 @@ import RxSwift
 class PullRequestDetailViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
+    fileprivate let disposeBag = DisposeBag()
     
     let pullRequest: PullRequest
     let repository: Repository
+    
     var pullRequestDetail: PullRequestDetail?
-    
-    var coordinator: PullRequestsCoordinator!
-    
-    fileprivate let disposeBag = DisposeBag()
-        
+    var coordinator: PullRequestsCoordinator!        
     var delegate: ViewModelDelegate!
     
     init(pullRequest: PullRequest, repository: Repository) {
@@ -55,6 +53,8 @@ extension PullRequestDetailViewModel {
     
 }
 
+// MARK: Helpers
+
 extension PullRequestDetailViewModel {
     
     func fetchPullRequest() {
@@ -67,6 +67,5 @@ extension PullRequestDetailViewModel {
                 self.delegate.apiCallDidFinish(error: error)
             }).addDisposableTo(disposeBag)
     }
-    
     
 }

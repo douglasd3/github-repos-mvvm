@@ -47,6 +47,8 @@ class RepositoryItemViewModel: ViewModel {
     
 }
 
+// MARK: Setup PullRequestsListViewModel with repository
+
 extension RepositoryItemViewModel {
     
     func createDetailViewModel() -> PullRequestsListViewModel {

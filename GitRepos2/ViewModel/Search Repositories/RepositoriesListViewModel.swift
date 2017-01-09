@@ -12,25 +12,24 @@ import RxSwift
 class RepositoriesListViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
+    fileprivate let disposeBag = DisposeBag()
     
     //var nextPageTrigger: Observable<Void> = .empty()
-    fileprivate let disposeBag = DisposeBag()
         
     var delegate: ViewModelDelegate!
-    
-    var dataSource: [Repository] = []
-    
+    var dataSource: [Repository] = []    
     var coordinator: RepositoriesCoordinator!
-    
     var isLoadingPage = false
-    var page = 1
+    var page = 1    
+    
+}
+
+// MARK: Computed Property
+
+extension RepositoriesListViewModel {
     
     var hasContent: Bool {
         return dataSource.count > 0
-    }
-    
-    init() {
-
     }
     
 }
