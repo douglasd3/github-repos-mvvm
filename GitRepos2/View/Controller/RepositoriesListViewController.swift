@@ -25,10 +25,8 @@ extension RepositoriesListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self        
         setup()
-        startLoading()
-        viewModel.loadRepositoryPage()
+        loadCurrentRepositoryPage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +47,7 @@ extension RepositoriesListViewController: StatefulViewController {
     
 }
 
-// MARK: Setup
+// MARK: Setup UI
 
 extension RepositoriesListViewController {
     
@@ -57,8 +55,8 @@ extension RepositoriesListViewController {
         setupTableView()
         setupNavigationBar()
         setupLoadingState()
-        setupTableViewDataSource()
-    }
+        //setupTableViewDataSource()
+    }    
     
     fileprivate func setupNavigationBar() {
         title = "Github Repositories"
@@ -71,14 +69,25 @@ extension RepositoriesListViewController {
         tableView.delegate = self
     }
     
-    fileprivate func setupTableViewDataSource() {
-        
-        let offset = view.bounds.height * 0.6
+//    fileprivate func setupTableViewDataSource() {
+//        
+//        let offset = view.bounds.height * 0.6
 //        viewModel.nextPageTrigger = tableView.rx.contentOffset
 //            .flatMap { _ in
 //                self.tableView.isNearBottomEdge(edgeOffset: offset) ? Observable.just(()) : Observable.empty()
 //        }
+//
+//    }
+    
+}
 
+// MARK: Helpers
+
+extension RepositoriesListViewController{
+    
+    func loadCurrentRepositoryPage() {
+        startLoading()
+        viewModel.loadRepositoryPage()
     }
     
 }
@@ -108,32 +117,18 @@ extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSo
     
 }
 
+// MARK: ScrollViewDelegate
+
 extension RepositoriesListViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.isNearBottomEdge() {
-//            print("did scroll")
-//        }
-        
         let offset = view.bounds.height * 0.6
         if (scrollView.isNearBottomEdge(edgeOffset: offset)) {
             if !viewModel.isLoadingPage {
-                print("chego")
                 viewModel.loadRepositoryPage()
             }
         }
-
     }
-    
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        print("chego 1")
-//        let offset = view.bounds.height * 0.6
-//        if (scrollView.isNearBottomEdge(edgeOffset: offset)) {
-//            if !viewModel.isLoadingPage {
-//                print("chego")
-//            }
-//        }
-//    }
     
 }
 

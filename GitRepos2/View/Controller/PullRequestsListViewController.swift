@@ -13,8 +13,6 @@ class PullRequestsListViewController: UIViewController, LoadingStatePresentableV
     
     @IBOutlet weak var tableView: UITableView!
     
-    //fileprivate let dataSource = RxTableViewSectionedReloadDataSource<SectionViewModel<PullRequestItemViewModel>>()
-    
     var viewModel: PullRequestsListViewModel!
     
 }
@@ -26,9 +24,7 @@ extension PullRequestsListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        startLoading()
-        viewModel.delegate = self
-        viewModel.fetchPullRequests()
+        fetchPullRequests()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,7 +53,7 @@ extension PullRequestsListViewController {
         setupNavigationBar()
         setupTableView()
         setupLoadingState()
-    }
+    }    
     
     fileprivate func setupNavigationBar() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -69,6 +65,17 @@ extension PullRequestsListViewController {
         tableView.register(R.nib.pullRequestCell)
         tableView.rowHeight = 112
         tableView.delegate = self
+    }
+    
+}
+
+// MARK: Helpers
+
+extension PullRequestsListViewController{
+    
+    func fetchPullRequests() {
+        startLoading()
+        viewModel.fetchPullRequests()
     }
     
 }

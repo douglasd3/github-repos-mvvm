@@ -23,7 +23,8 @@ class RepositoriesCoordinator: Coordinator {
         
         let viewModel = RepositoriesListViewModel()
         viewModel.coordinator = self
-        viewController.viewModel = viewModel        
+        viewModel.delegate = viewController
+        viewController.viewModel = viewModel
         window.rootViewController = navigationController
     }
     

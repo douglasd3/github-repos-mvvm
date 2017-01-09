@@ -20,9 +20,7 @@ class PullRequestDetailViewController: UIViewController, LoadingStatePresentable
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        startLoading()
-        viewModel.delegate = self
-        viewModel.fetchPullRequest()
+        fetchPullRequest()
     }
 
 }
@@ -37,6 +35,7 @@ extension PullRequestDetailViewController: StatefulViewController {
     
 }
 
+// MARK: Setup UI
 
 extension PullRequestDetailViewController {
     
@@ -49,6 +48,17 @@ extension PullRequestDetailViewController {
         if let number = viewModel.pullRequestNumber {
             title = "#\(number)"
         }
+    }
+    
+}
+
+// MARK: Helpers
+
+extension PullRequestDetailViewController{
+    
+    func fetchPullRequest() {
+        startLoading()
+        viewModel.fetchPullRequest()
     }
     
 }

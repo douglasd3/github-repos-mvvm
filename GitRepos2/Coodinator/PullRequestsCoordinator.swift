@@ -22,6 +22,7 @@ class PullRequestsCoordinator: Coordinator {
         guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
         
         viewModel?.coordinator = self
+        viewModel?.delegate = viewController
         viewController.viewModel = viewModel
         currentNavigationController.pushViewController(viewController, animated: true)
     }
@@ -31,6 +32,7 @@ class PullRequestsCoordinator: Coordinator {
 
         guard let currentNavigationController = window.rootViewController as? UINavigationController else { return }
         
+        viewModel.delegate = viewController
         viewController.viewModel = viewModel    
     
         currentNavigationController.pushViewController(viewController, animated: true)
