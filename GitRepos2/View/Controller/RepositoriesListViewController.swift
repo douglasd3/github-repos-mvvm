@@ -13,9 +13,15 @@ import RxSwift
 
 class RepositoriesListViewController: UIViewController, LoadingStatePresentableViewController {
     
+    // MARK: IBOutlet
+    
     @IBOutlet weak var tableView: UITableView!
-    var viewModel: RepositoriesListViewModel!
-    var page = 0
+    
+    var viewModel: RepositoriesListViewModel! {
+        didSet {
+            viewModel.viewDelegate = self
+        }
+    }
 
 }
 
@@ -67,17 +73,7 @@ extension RepositoriesListViewController {
         tableView.register(R.nib.repositoryCell)
         tableView.rowHeight = 113
         tableView.delegate = self
-    }
-    
-//    fileprivate func setupTableViewDataSource() {
-//        
-//        let offset = view.bounds.height * 0.6
-//        viewModel.nextPageTrigger = tableView.rx.contentOffset
-//            .flatMap { _ in
-//                self.tableView.isNearBottomEdge(edgeOffset: offset) ? Observable.just(()) : Observable.empty()
-//        }
-//
-//    }
+    }    
     
 }
 
@@ -112,7 +108,7 @@ extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSo
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! RepositoryCell                
         
-        viewModel.showRepoDetail(item: cell.viewModel.createDetailViewModel())
+        viewModel.itemSelected(item: cell.viewModel.createDetailViewModel())
     }
     
 }

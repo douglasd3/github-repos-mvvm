@@ -100,7 +100,7 @@ extension PullRequestsListViewController: UITableViewDelegate, UITableViewDataSo
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! PullRequestCell
         
-        viewModel.showPullRequestDetail(viewModel: cell.viewModel.createDetailViewModel(repository: viewModel.repository))
+        viewModel.itemSelected(viewModel: cell.viewModel.createDetailViewModel(repository: viewModel.repository))
     }
     
 }

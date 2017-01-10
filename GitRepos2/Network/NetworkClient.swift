@@ -69,6 +69,7 @@ extension NetworkClient {
     }
     
 }
+
 extension NetworkClient {
     
     func loadPullRequestDetail(forRepo repo: String, owner: String, number: Int) -> Observable<PullRequestDetail> {

@@ -21,5 +21,6 @@ extension ViewModelDelegate {
     func apiCallDidFinish(error: Error? = nil) {
         apiCallDidFinish(error: error)
     }
+    
 }
 

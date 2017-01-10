@@ -18,8 +18,8 @@ class PullRequestDetailViewModel: ViewModel {
     let repository: Repository
     
     var pullRequestDetail: PullRequestDetail?
-    var coordinator: PullRequestsCoordinator!        
-    var delegate: ViewModelDelegate!
+//    var coordinator: PullRequestsCoordinator!
+    var viewDelegate: ViewModelDelegate!
     
     init(pullRequest: PullRequest, repository: Repository) {
         self.pullRequest = pullRequest
@@ -62,9 +62,9 @@ extension PullRequestDetailViewModel {
             .subscribe(onNext: {
                 (pullRequestDetail) in
                 self.pullRequestDetail = pullRequestDetail
-                self.delegate.apiCallDidFinish()
+                self.viewDelegate.apiCallDidFinish()
             }, onError: { error in
-                self.delegate.apiCallDidFinish(error: error)
+                self.viewDelegate.apiCallDidFinish(error: error)
             }).addDisposableTo(disposeBag)
     }
     

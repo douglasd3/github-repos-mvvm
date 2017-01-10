@@ -44,7 +44,6 @@
 		DE41670E1E1E7A4400754407 /* PullRequestDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41670D1E1E7A4400754407 /* PullRequestDetail.swift */; };
 		DE4167101E1E7CC400754407 /* PullRequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41670F1E1E7CC400754407 /* PullRequestDetailViewController.swift */; };
 		DE4167151E1E7EA600754407 /* PullRequestDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4167141E1E7EA600754407 /* PullRequestDetailViewModel.swift */; };
-		DE4167171E1E7EF400754407 /* PullRequestsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4167161E1E7EF400754407 /* PullRequestsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +102,6 @@
 		DE41670D1E1E7A4400754407 /* PullRequestDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestDetail.swift; sourceTree = "<group>"; };
 		DE41670F1E1E7CC400754407 /* PullRequestDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestDetailViewController.swift; sourceTree = "<group>"; };
 		DE4167141E1E7EA600754407 /* PullRequestDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestDetailViewModel.swift; sourceTree = "<group>"; };
-		DE4167161E1E7EF400754407 /* PullRequestsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,7 +301,6 @@
 			children = (
 				A51C81871E1BDD4600FA2654 /* AppCoordinator.swift */,
 				A51C818E1E1BE17800FA2654 /* RepositoriesCoordinator.swift */,
-				DE4167161E1E7EF400754407 /* PullRequestsCoordinator.swift */,
 			);
 			path = Coodinator;
 			sourceTree = "<group>";
@@ -673,7 +670,6 @@
 				A51C819B1E1C10CF00FA2654 /* Repository.swift in Sources */,
 				A51C81A61E1C1F1F00FA2654 /* NetworkClient.swift in Sources */,
 				A5B49B351E1D72DD009D0ADD /* GithubReposRestApi.swift in Sources */,
-				DE4167171E1E7EF400754407 /* PullRequestsCoordinator.swift in Sources */,
 				DE4167151E1E7EA600754407 /* PullRequestDetailViewModel.swift in Sources */,
 				CB6263F34E1BDDB806E489AF /* AppDelegate.swift in Sources */,
 				A5B49B2B1E1D6556009D0ADD /* PullRequest.swift in Sources */,

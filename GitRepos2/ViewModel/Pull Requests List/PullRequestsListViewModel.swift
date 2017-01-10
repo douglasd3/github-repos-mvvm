@@ -9,6 +9,12 @@
 import Foundation
 import RxSwift
 
+protocol PullRequestsListViewModelCoordinatorDelegate {
+    
+    func didSelectItem(viewModel: PullRequestDetailViewModel)
+    
+}
+
 class PullRequestsListViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
@@ -17,8 +23,10 @@ class PullRequestsListViewModel: ViewModel {
     let repository: Repository
     
     var dataSource: [PullRequest] = []
-    var coordinator: PullRequestsCoordinator!
-    var delegate: ViewModelDelegate!
+    
+    //var coordinator: PullRequestsCoordinator!
+    var coordinatorDelegate: PullRequestsListViewModelCoordinatorDelegate?
+    var viewDelegate: ViewModelDelegate!
     
     init(repository: Repository) {
         self.repository = repository    
@@ -48,15 +56,15 @@ extension PullRequestsListViewModel {
         apiClient.loadPullRequest(forRepo: repository.name, owner: repository.owner.login)
             .subscribe(onNext: { (pulls) in
                 self.dataSource = pulls
-                self.delegate.apiCallDidFinish()
-                
+                self.viewDelegate.apiCallDidFinish()                
             }, onError: { error in
-                self.delegate.apiCallDidFinish(error: error)
+                self.viewDelegate.apiCallDidFinish(error: error)
             }).addDisposableTo(disposeBag)
     }
     
-    func showPullRequestDetail(viewModel: PullRequestDetailViewModel) {
-        coordinator.showPullRequestDetail(viewModel: viewModel)
+    func itemSelected(viewModel: PullRequestDetailViewModel) {
+        //coordinator.showPullRequestDetail(viewModel: viewModel)
+        coordinatorDelegate?.didSelectItem(viewModel: viewModel)
     }
     
 }

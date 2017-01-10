@@ -9,16 +9,21 @@
 import Foundation
 import RxSwift
 
+protocol RepositoriesListViewModelCoordinatorDelegate {
+    
+    func didSelectItem(viewModel: PullRequestsListViewModel)
+    
+}
+
 class RepositoriesListViewModel: ViewModel {
     
     fileprivate var apiClient = NetworkClient()
-    fileprivate let disposeBag = DisposeBag()
-    
-    //var nextPageTrigger: Observable<Void> = .empty()
+    fileprivate let disposeBag = DisposeBag()        
         
-    var delegate: ViewModelDelegate!
-    var dataSource: [Repository] = []    
-    var coordinator: RepositoriesCoordinator!
+    var viewDelegate: ViewModelDelegate!
+    var coordinatorDelegate: RepositoriesListViewModelCoordinatorDelegate?
+    
+    var dataSource: [Repository] = []
     var isLoadingPage = false
     var page = 1    
     
@@ -38,33 +43,22 @@ extension RepositoriesListViewModel {
 
 extension RepositoriesListViewModel {
     
-//    func fetchRepositories() {
-//        apiClient.searchRepositories(nextPageTrigger: nextPageTrigger)
-//            .skip(1)
-//            .subscribe(onNext: { (repositories) in
-//                self.dataSource = repositories
-//                self.delegate.apiCallDidFinish()
-//            }, onError: { error in
-//                self.delegate.apiCallDidFinish(error: error)
-//            }).addDisposableTo(disposeBag)
-//    }
-    
     func loadRepositoryPage() {
         isLoadingPage = true
         apiClient.loadRepositoriesPage(page)
             .subscribe(onNext: { (repositories) in
                 self.dataSource.append(contentsOf: repositories)
-                self.delegate.apiCallDidFinish()
+                self.viewDelegate.apiCallDidFinish()
                 self.isLoadingPage = false
                 self.page += 1
             }, onError: { error in
-                self.delegate.apiCallDidFinish(error: error)
+                self.viewDelegate.apiCallDidFinish(error: error)
                 self.isLoadingPage = false
             }).addDisposableTo(disposeBag)
     }
     
-    func showRepoDetail(item: PullRequestsListViewModel) {
-        coordinator.showRepoDetail(viewModel: item)
+    func itemSelected(item: PullRequestsListViewModel) {
+        coordinatorDelegate?.didSelectItem(viewModel: item)
     }
     
 }

@@ -12,29 +12,46 @@ import UIKit
 class RepositoriesCoordinator: Coordinator {
     
     fileprivate let window: UIWindow
+    fileprivate var currentNavigationController: UINavigationController?
     
     required init(window: UIWindow) {
         self.window = window
+        currentNavigationController = R.storyboard.main.instantiateInitialViewController()
     }
     
     func start() {
-        guard let navigationController = R.storyboard.main.instantiateInitialViewController() else { return }
-        guard let viewController = navigationController.topViewController as? RepositoriesListViewController else { return }
+        guard let viewController = currentNavigationController?.topViewController as? RepositoriesListViewController else { return }
         
         let viewModel = RepositoriesListViewModel()
-        viewModel.coordinator = self
-        viewModel.delegate = viewController
+        viewModel.coordinatorDelegate = self
         viewController.viewModel = viewModel
-        window.rootViewController = navigationController
+        window.rootViewController = currentNavigationController
     }
     
 }
 
-extension RepositoriesCoordinator {
+extension RepositoriesCoordinator: RepositoriesListViewModelCoordinatorDelegate {
     
-    func showRepoDetail(viewModel: PullRequestsListViewModel) {
-        let pullRequestCoordinator = PullRequestsCoordinator(window: window)
-        pullRequestCoordinator.start(viewModel: viewModel)
+    func didSelectItem(viewModel: PullRequestsListViewModel) {
+        guard let viewController = R.storyboard.main.pullRequestsListViewController() else { return }
+        
+        viewModel.coordinatorDelegate = self
+        viewModel.viewDelegate = viewController
+        viewController.viewModel = viewModel
+        currentNavigationController?.pushViewController(viewController, animated: true)                
+    }
+    
+}
+
+extension RepositoriesCoordinator: PullRequestsListViewModelCoordinatorDelegate {
+    
+    func didSelectItem(viewModel: PullRequestDetailViewModel) {
+        guard let viewController = R.storyboard.main.pullRequestDetailViewController() else { return }
+        
+        viewModel.viewDelegate = viewController
+        viewController.viewModel = viewModel
+        
+        currentNavigationController?.pushViewController(viewController, animated: true)
     }
     
 }
