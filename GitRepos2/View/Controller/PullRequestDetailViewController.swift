@@ -15,7 +15,11 @@ class PullRequestDetailViewController: UIViewController, LoadingStatePresentable
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     
-    var viewModel: PullRequestDetailViewModel!
+    var viewModel: PullRequestDetailViewModel! {
+        didSet {
+            viewModel.viewDelegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

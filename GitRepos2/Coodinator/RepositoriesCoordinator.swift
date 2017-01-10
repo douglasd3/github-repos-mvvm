@@ -38,7 +38,6 @@ extension RepositoriesCoordinator: RepositoriesListViewModelCoordinatorDelegate 
         guard let viewController = R.storyboard.main.pullRequestsListViewController() else { return }
         
         viewModel.coordinatorDelegate = self
-        viewModel.viewDelegate = viewController
         viewController.viewModel = viewModel
         currentNavigationController?.pushViewController(viewController, animated: true)                
     }
@@ -51,8 +50,7 @@ extension RepositoriesCoordinator: PullRequestsListViewModelCoordinatorDelegate 
     
     func didSelectItem(viewModel: PullRequestDetailViewModel) {
         guard let viewController = R.storyboard.main.pullRequestDetailViewController() else { return }
-        
-        viewModel.viewDelegate = viewController
+                
         viewController.viewModel = viewModel        
         currentNavigationController?.pushViewController(viewController, animated: true)
     }

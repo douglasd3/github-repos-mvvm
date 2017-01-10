@@ -13,7 +13,12 @@ class PullRequestsListViewController: UIViewController, LoadingStatePresentableV
     
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: PullRequestsListViewModel!
+    var viewModel: PullRequestsListViewModel! {
+        didSet {
+            viewModel.viewDelegate = self
+        }
+    }
+
     
 }
 
