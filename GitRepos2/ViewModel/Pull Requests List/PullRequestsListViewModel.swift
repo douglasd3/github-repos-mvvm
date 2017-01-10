@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-protocol PullRequestsListViewModelCoordinatorDelegate {
+protocol PullRequestsListViewModelCoordinatorDelegate: Coordinator {
     
     func didSelectItem(viewModel: PullRequestDetailViewModel)
     

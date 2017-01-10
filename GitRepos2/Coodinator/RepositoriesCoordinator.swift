@@ -30,6 +30,8 @@ class RepositoriesCoordinator: Coordinator {
     
 }
 
+// MARK: RepositoriesListViewModelCoordinatorDelegate
+
 extension RepositoriesCoordinator: RepositoriesListViewModelCoordinatorDelegate {
     
     func didSelectItem(viewModel: PullRequestsListViewModel) {
@@ -43,14 +45,15 @@ extension RepositoriesCoordinator: RepositoriesListViewModelCoordinatorDelegate 
     
 }
 
+// MARK: PullRequestsListViewModelCoordinatorDelegate
+
 extension RepositoriesCoordinator: PullRequestsListViewModelCoordinatorDelegate {
     
     func didSelectItem(viewModel: PullRequestDetailViewModel) {
         guard let viewController = R.storyboard.main.pullRequestDetailViewController() else { return }
         
         viewModel.viewDelegate = viewController
-        viewController.viewModel = viewModel
-        
+        viewController.viewModel = viewModel        
         currentNavigationController?.pushViewController(viewController, animated: true)
     }
     
